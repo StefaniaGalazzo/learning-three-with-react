@@ -9,6 +9,7 @@ const AnimatedSphere = () => {
       obj.current._distort.value--;
     };
     setTimeout(prevDistortionValue, 4500);
+    clearTimeout(prevDistortionValue);
   };
   return (
     <Sphere
