@@ -1,9 +1,11 @@
 import styled from "styled-components";
+import { Suspense } from "react";
 import { Text } from "./components/Text.jsx";
 import { Box } from "./components/Geometry/Box.js";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { AnimatedSphere } from "./components/Geometry/Sphere.js";
+import { TorusObj } from "./components/Geometry/Torus.js";
 
 function App() {
   return (
@@ -23,6 +25,16 @@ function App() {
         <ambientLight intensity={0.5} />
         <directionalLight position={[-2, 5, 2]} intensity={1} />
         <AnimatedSphere />
+      </Canvas>
+
+      <CanvasTitle>Mega donut</CanvasTitle>
+      <Canvas className="canvas">
+        <OrbitControls enableZoom={false} autoRotate={true} />
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[-5, 5, 2]} intensity={0.3} />
+        <Suspense fallback={null}>
+          <TorusObj />
+        </Suspense>
       </Canvas>
     </Wrapper>
   );
